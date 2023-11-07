@@ -1,2 +1,2 @@
 <h1> INFO </h1>
-<h2> I will be posting here solutions to various exercises. </h2>
+<h3> I will be posting here solutions for exercises. </h3>

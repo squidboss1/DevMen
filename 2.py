@@ -12,5 +12,5 @@ def reverse(**kwargs):
 result = reverse(**dictonary_1)
 
 with open("result.txt", "w", encoding="utf-8") as plik:
-    # plik.write(json.dumps(result))
+    plik.write(json.dumps(result))
     # json.dump(result, plik)

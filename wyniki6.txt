@@ -1,0 +1,4 @@
+1. Najciemniejszy piksel: 7, Najjaśniejszy piksel: 221
+2. Najmniejsza liczba wierszy do usunięcia: 0
+3. Liczba pikseli kontrastujących: 462
+4. Najdłuższa linia pionowa: 5

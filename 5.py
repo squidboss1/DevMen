@@ -12,9 +12,17 @@ def min_rows_to_remove(data):
 def contrast_pixels(data):
     contrast_pixels_count = 0
 
-    for i in range(len(data) - 1):
-        for j in range(len(data[i]) - 1):
-            if abs(data[i][j + 1] - data[i][j]) > 128 or abs(data[i][j] - data[i + 1][j]) > 128:
+    for column in range(len(data) - 1):
+        for line in range(len(data[column]) - 1):
+
+            contrast_with_pixel_below = abs(data[column][line + 1] - data[column][line])
+            contrast_with_pixel_on_the_right = abs(data[column][line] - data[column + 1][line])
+
+            def is_above_treshold(contrast):
+                return contrast > 128
+
+
+            if is_above_treshold(contrast_with_pixel_below) or is_above_treshold(contrast_with_pixel_on_the_right):
                 contrast_pixels_count += 1
 
     return contrast_pixels_count
@@ -39,6 +47,11 @@ with open('dane.txt', 'r') as file:
     lines = file.readlines()
 
 data = [list(map(int, line.split())) for line in lines]
+def parse(lines):
+    # 1. split
+    # 2. map (int, 'split')
+    # 3. list
+
 # print(data)
 
 with open('wyniki6.txt', 'w', encoding="utf-8") as output_file:

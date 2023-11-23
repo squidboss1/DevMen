@@ -21,7 +21,6 @@ def contrast_pixels(data):
             def is_above_treshold(contrast):
                 return contrast > 128
 
-
             if is_above_treshold(contrast_with_pixel_below) or is_above_treshold(contrast_with_pixel_on_the_right):
                 contrast_pixels_count += 1
 
@@ -46,13 +45,25 @@ def max_vertical_length(data):
 with open('dane.txt', 'r') as file:
     lines = file.readlines()
 
-data = [list(map(int, line.split())) for line in lines]
-def parse(lines):
-    # 1. split
-    # 2. map (int, 'split')
-    # 3. list
 
-# print(data)
+# data = [list(map(int, line.split())) for line in lines]
+def parse(lines):
+    data = []
+
+    for line in lines:
+        # Rozbijanie linii na elementy za pomocą metody split
+        elements = line.split()
+
+        # Utworzenie nowej listy, w której każdy element jest skonwertowany na liczbę całkowitą
+        int_elements = list(map(int, elements))
+
+        # Dodanie skonwertowanej listy do głównej listy danych
+        data.append(int_elements)
+
+    return data
+
+
+data = parse(lines)
 
 with open('wyniki6.txt', 'w', encoding="utf-8") as output_file:
     min_brightness, max_brightness = min_max_brightness(data)

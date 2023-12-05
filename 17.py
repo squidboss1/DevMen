@@ -52,7 +52,7 @@ class Menu:
             choice = int(input("Którą opcję Pan/Pani wybiera?: "))
             return choice
         except ValueError:
-            raise ValueError("Nieprawidłowy wybór. Wprowadź liczbę.")
+            print("Nieprawidłowy wybór. Wprowadź liczbę.")
 
 
 class NotesSubManager:
@@ -71,7 +71,7 @@ class NotesSubManager:
         else:
             print("Notatki:")
             for note in self.notes_list:
-                print(str(note))
+                print(note)
 
 
 class CardsSubManager:
@@ -91,7 +91,7 @@ class CardsSubManager:
         else:
             print("Wizytówki:")
             for card in self.cards_list:
-                print(str(card))
+                print(card)
 
 
 class Note:

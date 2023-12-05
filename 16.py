@@ -19,7 +19,7 @@ class Bus(Vehicle):
 class Tram(Vehicle):
     def __init__(self, number, max_speed, num_wagons):
         super().__init__(number, max_speed)
-        if num_wagons > 0 & num_wagons < 4:
+        if 0 < num_wagons < 4:
             self.num_wagons = num_wagons
         else:
             raise ValueError("Tram can have only 1 - 3 wagons!")
@@ -35,10 +35,10 @@ class Depot:
         self.vehicles_in_the_depot = []
 
     def add_vehicle(self, vehicle):
-        if isinstance(vehicle, self.vehicle_type):
-            self.vehicles_in_the_depot.append(vehicle)
-        else:
+        if not isinstance(vehicle, self.vehicle_type):
             raise TypeError(f"{vehicle.__class__.__name__} is not a {self.vehicle_type.__name__} type!")
+        self.vehicles_in_the_depot.append(vehicle)
+
 
     def total_fuel_consumption(self):
         if self.vehicle_type == Bus:
@@ -48,7 +48,7 @@ class Depot:
     def __str__(self):
         result = f"Depot {self.name}, Vehicle Type: {self.vehicle_type.__name__}\n"
         for vehicle in self.vehicles_in_the_depot:
-            result += f"  {str(vehicle)}\n"
+            result += f"  {vehicle}\n"
         if self.vehicle_type == Bus:
             result += f"  Total Fuel Consumption: {self.total_fuel_consumption()} liters\n"
         elif self.vehicle_type == Tram:
